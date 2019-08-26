@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-20 15:48:35
- * @LastEditTime: 2019-08-23 17:49:58
+ * @LastEditTime: 2019-08-26 15:13:10
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -84,6 +84,11 @@ export default {
     &::after{
       content: '';
       vertical-align: top;
+    }
+  }
+  /deep/ .Slider{
+    .shadow{
+      box-shadow: 0px 5px 10px 2px #999999;
     }
   }
 }

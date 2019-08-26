@@ -2,13 +2,58 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-20 15:48:35
- * @LastEditTime: 2019-08-23 19:08:30
+ * @LastEditTime: 2019-08-26 14:53:55
  * @LastEditors: Please set LastEditors
  -->
 <template>
   <div class="contact">
     <Bread :breadArr='breadArr'/>
-    <div class="text" v-html="content"></div>
+    <div class="text" v-html="content" v-show="!!content"></div>
+    <div class="feedback" v-show="!content">
+      <div class="feedbackTxt">感谢大家对宏圣机械的支持，为了更好的服务客户，让我们更及时、准确、全方位、止于至善的为您服务， 您可以通过如下方式给我们留言：</div>
+      <el-row>
+        <el-col :span='2'>您的姓名：</el-col>
+        <el-col :span='4'>
+          <el-input
+            placeholder="您的姓名"
+            v-model="inputName"
+            clearable>
+          </el-input>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span='2'>您的邮箱：</el-col>
+        <el-col :span='4'>
+          <el-input
+            placeholder="您的邮箱"
+            v-model="inputEmail"
+            clearable>
+          </el-input>
+        </el-col>
+      </el-row>
+      <el-row>
+        留言内容：
+      </el-row>
+      <el-row>
+        <el-col :span='18'>
+          <el-input
+            type="textarea"
+            placeholder="请输入内容"
+            v-model="inputInfo"
+            maxlength="200"
+            show-word-limit
+          >
+          </el-input>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col class="submit" :span='18'>
+          <el-button @click="submitData">
+            提交信息
+          </el-button>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -42,19 +87,28 @@ export default {
           title: '联系我们',
           to: {path: '/contact/contact_info', name: 'contact_info', params: {id: 0}}
         }
-      ]
+      ],
+      inputName: '',
+      inputEmail: '',
+      inputInfo: ''
     }
   },
   methods: {
     init () {
       var id = this.$route.params.id
+      this.content = ''
       this.title = articleArr[id]['title']
-      this.content = articleArr[id]['content']
       var tempObj = {
         title: this.title,
         to: {path: '/contact/contact_info', name: 'contact_info', params: {id}}
       }
       this.$set(this.breadArr, 1, tempObj)
+      if (id === 0) {
+        this.content = articleArr[id]['content']
+      }
+    },
+    submitData () {
+      console.log(this.inputName, this.inputEmail, this.inputInfo)
     }
   },
   watch: {
@@ -68,10 +122,28 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import "../assets/css/reset.scss";
-.about {
+.contact {
   .text{
     padding: 5px;
     line-height: 2;
   }
+  .feedback{
+    padding: 5px;
+    line-height: 2;
+  }
+  .submit{
+    text-align: right;
+  }
 }
+  /deep/ .el-row{
+    margin-top: 10px;
+    .el-col{
+      line-height: 40px;
+    }
+  }
+  /deep/ .el-button{
+    color: #ff0000;
+    border-radius: 0px 20px 0px 20px;
+    border: 1px solid #ff0000;
+  }
 </style>

@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-20 15:48:35
- * @LastEditTime: 2019-08-22 09:32:00
+ * @LastEditTime: 2019-08-26 15:02:00
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -13,6 +13,7 @@
       <!-- Optional controls -->
       <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
+    <div class="shadow"></div>
   </div>
 </template>
 

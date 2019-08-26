@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-20 15:48:35
- * @LastEditTime: 2019-08-23 16:58:12
+ * @LastEditTime: 2019-08-26 15:15:08
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -88,6 +88,9 @@ export default {
           vertical-align: middle;
           color: #FFFFFF;
           cursor: pointer;
+          &:hover{
+            color: #333333;
+          }
         }
         &::after{
           content: '';
